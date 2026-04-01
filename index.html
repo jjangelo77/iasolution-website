@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Solution | Global AI Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #00d4ff; --accent: #7000ff; --dark: #050608; --card: #111218; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            background: var(--dark); color: white; font-family: 'Inter', sans-serif; 
+            margin: 0; line-height: 1.6; overflow-x: hidden; text-align: center;
+        }
+
+        .lang-selector {
+            padding: 20px; display: flex; justify-content: center; gap: 15px;
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .lang-btn {
+            background: none; border: 1px solid #333; color: #888; padding: 5px 12px;
+            border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: 0.3s;
+        }
+        .lang-btn.active { border-color: var(--primary); color: var(--primary); background: rgba(0,212,255,0.1); }
+
+        .hero {
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08), transparent);
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+
+        h1 { 
+            font-size: clamp(2.5rem, 10vw, 4rem); 
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 10px 0; font-weight: 700; letter-spacing: -2px;
+        }
+
+        p.subtitle { 
+            font-size: 1.1rem; color: #a0a0a0; max-width: 550px; 
+            margin: 20px auto 40px; padding: 0 15px; text-align: center;
+        }
+
+        .cta-button { 
+            display: flex; justify-content: center; align-items: center;
+            width: 100%; max-width: 320px; margin: 0 auto;
+            padding: 20px; background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white; text-decoration: none; border-radius: 14px;
+            font-weight: bold; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+
+        .services { padding: 40px 20px; max-width: 1100px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        .card { 
+            background: var(--card); padding: 40px 30px; border-radius: 24px; 
+            border: 1px solid rgba(255,255,255,0.05); text-align: center;
+        }
+        .card h3 { color: var(--primary); margin-bottom: 15px; }
+        .card p { color: #888; font-size: 0.95rem; }
+
+        footer { padding: 60px 20px; color: #444; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+    <nav class="lang-selector">
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button id="btn-pt" class="lang-btn" onclick="setLang('pt')">PT</button>
+        <button id="btn-es" class="lang-btn" onclick="setLang('es')">ES</button>
+    </nav>
+
+    <section class="hero">
+        <div id="top-tag" style="text-transform: uppercase; letter-spacing: 4px; color: var(--primary); font-size: 0.7rem; font-weight: bold;">
+            Future is Now
+        </div>
+        <h1>IA Solution</h1>
+        <p id="hero-desc" class="subtitle">We create the future of your company with high-performance artificial intelligence and automation.</p>
+        <a id="cta-text" href="mailto:contato@iasolution.cloud" class="cta-button">Talk to a Specialist</a>
+    </section>
+
+    <div class="services">
+        <div class="grid">
+            <div class="card">
+                <h3 id="card1-t">SDR Agents</h3>
+                <p id="card1-d">AI trained to qualify leads and sell 24/7 on your WhatsApp.</p>
+            </div>
+            <div class="card">
+                <h3 id="card2-t">Workflow AI</h3>
+                <p id="card2-d">Total integration of systems to eliminate manual and repetitive tasks.</p>
+            </div>
+            <div class="card">
+                <h3 id="card3-t">Custom SaaS</h3>
+                <p id="card3-d">Development of complete platforms with native AI power.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 IA SOLUTION CLOUD<br>
+        <span id="footer-text">Automation Technology and Artificial Intelligence</span></p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                tag: "Future is Now",
+                heroDesc: "We create the future of your company with high-performance artificial intelligence and automation.",
+                cta: "Talk to a Specialist",
+                c1t: "SDR Agents", c1d: "AI trained to qualify leads and sell 24/7 on your WhatsApp.",
+                c2t: "Workflow AI", c2d: "Total integration of systems to eliminate manual and repetitive tasks.",
+                c3t: "Custom SaaS", c3d: "Development of complete platforms with native AI power.",
+                foot: "Automation Technology and Artificial Intelligence"
+            },
+            pt: {
+                tag: "O Futuro é Agora",
+                heroDesc: "Criamos o futuro da sua empresa com inteligência artificial e automação de alta performance.",
+                cta: "Falar com Especialista",
+                c1t: "Agentes SDR", c1d: "IA treinada para qualificar leads e vender 24/7 no seu WhatsApp.",
+                c2t: "Fluxos de Automação", c2d: "Integração total de sistemas para eliminar tarefas manuais e repetitivas.",
+                c3t: "SaaS Custom", c3d: "Desenvolvimento de plataformas completas com IA nativa.",
+                foot: "Tecnologia em Automação e Inteligência Artificial"
+            },
+            es: {
+                tag: "El Futuro es Ahora",
+                heroDesc: "Creamos el futuro de su empresa con inteligencia artificial y automatización de alto rendimiento.",
+                cta: "Hablar con Especialista",
+                c1t: "Agentes SDR", c1d: "IA entrenada para calificar leads y vender 24/7 en su WhatsApp.",
+                c2t: "Flujos de Automatización", c2d: "Integración total de sistemas para eliminar tareas manuales y repetitivas.",
+                c3t: "SaaS Custom", c3d: "Desarrollo de plataformas completas con IA nativa.",
+                foot: "Tecnología en Automatización e Inteligencia Artificial"
+            }
+        };
+
+        function setLang(lang) {
+            document.getElementById('top-tag').innerText = translations[lang].tag;
+            document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
+            document.getElementById('cta-text').innerText = translations[lang].cta;
+            document.getElementById('card1-t').innerText = translations[lang].c1t;
+            document.getElementById('card1-d').innerText = translations[lang].c1d;
+            document.getElementById('card2-t').innerText = translations[lang].c2t;
+            document.getElementById('card2-d').innerText = translations[lang].c2d;
+            document.getElementById('card3-t').innerText = translations[lang].c3t;
+            document.getElementById('card3-d').innerText = translations[lang].c3d;
+            document.getElementById('footer-text').innerText = translations[lang].foot;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+    </script>
+</body>
+</html>
