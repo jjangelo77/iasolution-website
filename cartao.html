@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Visita — IASolution Forge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 40px;
+            padding: 40px 20px;
+        }
+
+        .label {
+            color: #555;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* CARTÃO — frente e verso lado a lado */
+        .cartoes {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cartao-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+        /* Tamanho padrão cartão: 90x50mm — simulado em px */
+        .cartao {
+            width: 340px;
+            height: 190px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        /* ── FRENTE ── */
+        .frente {
+            background: #0a0a0a;
+        }
+
+        /* Detalhe decorativo canto */
+        .frente::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(112,0,255,0.15), transparent 70%);
+        }
+        .frente::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 70%);
+        }
+
+        /* Linha roxa esquerda */
+        .frente .borda-esq {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00d4ff, #7000ff);
+        }
+
+        .frente .conteudo {
+            position: absolute;
+            inset: 0;
+            padding: 22px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .frente .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .frente .logo-texto h2 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+        .frente .logo-texto span {
+            font-size: 7px;
+            color: #00d4ff;
+            letter-spacing: 4px;
+        }
+        .frente .logo-sep {
+            width: 1px;
+            height: 28px;
+            background: #333;
+        }
+
+        .frente .nome-area {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .frente .nome {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .frente .cargo {
+            font-size: 9px;
+            color: #00d4ff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .frente .contatos {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .frente .contato-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 8.5px;
+            color: #888;
+        }
+        .frente .contato-item .dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #7000ff;
+            flex-shrink: 0;
+        }
+
+        /* ── VERSO ── */
+        .verso {
+            background: #0a0a0a;
+        }
+        .verso::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0,212,255,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(112,0,255,0.08) 0%, transparent 50%);
+        }
+
+        .verso .conteudo {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Linha roxa fundo */
+        .verso .linha-top {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #00d4ff, #7000ff);
+        }
+        .verso .linha-bot {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #7000ff, #00d4ff);
+        }
+
+        .verso .logo-grande {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .verso .logo-sep {
+            width: 1px;
+            height: 36px;
+            background: #222;
+        }
+        .verso .logo-texto h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .verso .logo-texto span {
+            font-size: 8px;
+            color: #00d4ff;
+            letter-spacing: 5px;
+        }
+        .verso .tagline {
+            font-size: 8px;
+            color: #444;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .verso .site {
+            font-size: 9px;
+            color: #7000ff;
+            letter-spacing: 0.5px;
+        }
+
+    @media print {
+            body { background: #fff; }
+            .cartao { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartoes">
+            <div class="cartao-wrap">
+                <div class="label" style="margin:0">Frente</div>
+                <div class="cartao frente">
+                    <div class="borda-esq"></div>
+                    <div class="conteudo">
+                        <div class="logo-area">
+                            <svg width="36" height="34" viewBox="0 0 36 34" xmlns="http://www.w3.org/2000/svg">
+                                <text x="5" y="30" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" fill="#7000ff">A</text>
+                                <text x="1" y="30" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" fill="#00d4ff" opacity="0.92">I</text>
+                            </svg>
+                            <div class="logo-sep"></div>
+                            <div class="logo-texto">
+                                <h2>IASolution</h2>
+                                <span>F O R G E</span>
+                            </div>
+                        </div>
+                        <div class="nome-area">
+                            <div class="nome">Jonas Angelo</div>
+                            <div class="cargo">Fundador & Desenvolvedor</div>
+                        </div>
+                        <div class="contatos">
+                            <div class="contato-item"><div class="dot"></div>contato@iasolution.cloud</div>
+                            <div class="contato-item"><div class="dot"></div>iasolution.cloud</div>
+                            <div class="contato-item"><div class="dot"></div>(85) 99273-6922</div>
+                            <div class="contato-item"><div class="dot"></div>Fortaleza, CE — Brasil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cartao-wrap">
+                <div class="label" style="margin:0">Verso</div>
+                <div class="cartao verso">
+                    <div class="linha-top"></div>
+                    <div class="linha-bot"></div>
+                    <div class="conteudo">
+                        <div class="logo-grande">
+                            <svg width="52" height="46" viewBox="0 0 52 46" xmlns="http://www.w3.org/2000/svg">
+                                <text x="8" y="42" font-family="Arial Black, sans-serif" font-size="44" font-weight="900" fill="#7000ff">A</text>
+                                <text x="4" y="42" font-family="Arial Black, sans-serif" font-size="44" font-weight="900" fill="#00d4ff" opacity="0.92">I</text>
+                            </svg>
+                            <div class="logo-sep"></div>
+                            <div class="logo-texto">
+                                <h2>IASolution</h2>
+                                <span>F O R G E</span>
+                            </div>
+                        </div>
+                        <div class="tagline">Soluções Inteligentes</div>
+                        <div class="site">iasolution.cloud</div>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>

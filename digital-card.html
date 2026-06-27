@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IASolution Forge — Jonas Angelo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #0d0d0d;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(112,0,255,0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0,212,255,0.04) 0%, transparent 50%);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 380px;
+            background: #0a0a0a;
+            border-radius: 20px;
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(112,0,255,0.1), transparent 70%);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,212,255,0.05), transparent 70%);
+        }
+
+        .borda-esq {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00d4ff, #7000ff);
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-texto {
+            text-align: center;
+        }
+
+        .logo-texto h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .logo-texto span {
+            font-size: 9px;
+            color: #00d4ff;
+            letter-spacing: 6px;
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile .nome {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .profile .cargo {
+            font-size: 10px;
+            color: #00d4ff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .profile .tagline {
+            font-size: 10px;
+            color: #555;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #00d4ff, #7000ff);
+            border-radius: 2px;
+        }
+
+        .contatos {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #888;
+            font-size: 13px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .contato-item:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(112,0,255,0.2);
+            color: #fff;
+        }
+
+        .contato-item .icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contato-item .icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .contato-item .label {
+            font-size: 9px;
+            color: #555;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .contato-item .value {
+            color: #ccc;
+        }
+
+        .contato-item .texto {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .btn-whatsapp {
+            background: rgba(0,212,255,0.05);
+            border-color: rgba(0,212,255,0.1);
+        }
+
+        .btn-whatsapp .value { color: #00d4ff; }
+
+        .footer {
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .footer a {
+            color: #7000ff;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 420px) {
+            body { padding: 16px; }
+            .card { padding: 28px 20px; }
+            .contato-item { padding: 12px 14px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="borda-esq"></div>
+        <div class="content">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <svg width="56" height="52" viewBox="0 0 56 52" xmlns="http://www.w3.org/2000/svg">
+                        <text x="8" y="48" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#7000ff">A</text>
+                        <text x="3" y="48" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#00d4ff" opacity="0.92">I</text>
+                    </svg>
+                </div>
+                <div class="logo-texto">
+                    <h1>IASolution</h1>
+                    <span>F O R G E</span>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="nome">Jonas Angelo</div>
+                <div class="cargo">Fundador &amp; Desenvolvedor</div>
+                <div class="tagline">Soluções Inteligentes</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="contatos">
+                <a class="contato-item btn-whatsapp" href="https://wa.me/5585992736922" target="_blank">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.5 6.5a7.5 7.5 0 0 1 0 10.6M6.5 17.5A7.5 7.5 0 1 1 17.5 6.5"/>
+                            <path d="M8 8.5c0-.3.2-.5.4-.5h.5c.3 0 .5.2.6.5l.5 1.5c.1.2 0 .5-.2.6l-.6.6c.3.6.8 1.1 1.4 1.4l.6-.6c.1-.2.4-.3.6-.2l1.5.5c.3.1.5.3.5.6v.5c0 .2-.2.4-.5.4A4 4 0 0 1 8 8.5"/>
+                        </svg>
+                    </div>
+                    <div class="texto">
+                        <div class="label">WhatsApp</div>
+                        <div class="value">(85) 99273-6922</div>
+                    </div>
+                </a>
+
+                <a class="contato-item" href="mailto:contato@iasolution.cloud">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-10 7L2 7"/>
+                        </svg>
+                    </div>
+                    <div class="texto">
+                        <div class="label">E-mail</div>
+                        <div class="value">contato@iasolution.cloud</div>
+                    </div>
+                </a>
+
+                <a class="contato-item" href="https://iasolution.cloud" target="_blank">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <div class="texto">
+                        <div class="label">Site</div>
+                        <div class="value">iasolution.cloud</div>
+                    </div>
+                </a>
+
+                <div class="contato-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="texto">
+                        <div class="label">Localização</div>
+                        <div class="value">Fortaleza, CE — Brasil</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <a href="https://iasolution.cloud" target="_blank">iasolution.cloud</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
