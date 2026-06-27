@@ -224,6 +224,19 @@
             color: #7000ff;
             letter-spacing: 0.5px;
         }
+        .verso .qr-code {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        .qr-label {
+            font-size: 5.5px;
+            color: #444;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 1px;
+        }
 
     @media print {
             body { background: #fff; }
@@ -283,6 +296,8 @@
                         </div>
                         <div class="tagline">Soluções Inteligentes</div>
                         <div class="site">iasolution.cloud</div>
+                        <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://iasolution.cloud/digital-card.html" alt="QR Code">
+                        <div class="qr-label">Cartão Digital</div>
                     </div>
                 </div>
             </div>
