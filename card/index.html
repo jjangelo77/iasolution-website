@@ -203,6 +203,13 @@
 
         .btn-whatsapp .value { color: #00d4ff; }
 
+        .btn-salvar {
+            background: rgba(112,0,255,0.08);
+            border-color: rgba(112,0,255,0.15);
+            justify-content: center;
+        }
+        .btn-salvar .value { color: #7000ff; font-weight: 600; }
+
         .footer {
             text-align: center;
             margin-top: 4px;
@@ -304,6 +311,20 @@
                         <div class="value">Fortaleza, CE — Brasil</div>
                     </div>
                 </div>
+
+                <a class="contato-item btn-salvar" href="/contato.vcf" download>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7000ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </div>
+                    <div class="texto">
+                        <div class="label">Salvar Contato</div>
+                        <div class="value">Baixar .vcf</div>
+                    </div>
+                </a>
             </div>
 
             <div class="footer">
