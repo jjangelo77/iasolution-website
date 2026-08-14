@@ -166,9 +166,12 @@ git commit -m "descrição curta do que mudou"
 git push origin main
 
 # 2. Na VPS (via SSH)
+#    O container (nginx:alpine) monta esta pasta via bind-mount (/usr/share/nginx/html),
+#    então o `git pull` já publica os arquivos automaticamente. NÃO existe docker-compose
+#    para este site — não use `docker compose up`.
 cd /root/iasolution-website/
 git pull origin main
-docker compose up -d --build --force-recreate iasolution-website
+docker restart iasolution-website   # opcional — recarrega o nginx (não é obrigatório)
 ```
 
 ### Regras de commit
