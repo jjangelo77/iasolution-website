@@ -168,7 +168,7 @@ git push origin main
 # 2. Na VPS (via SSH)
 cd /root/iasolution-website/
 git pull origin main
-docker restart iasolution-website
+docker compose up -d --build --force-recreate iasolution-website
 ```
 
 ### Regras de commit

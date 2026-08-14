@@ -9,6 +9,6 @@ cd /root/iasolution-website/
 # 2. Baixar a versão mais recente do GitHub
 git pull origin main
 
-# 3. Reiniciar o container Nginx
-docker restart iasolution-website
+# 3. Reconstruir e recriar o container Nginx
+docker compose up -d --build --force-recreate iasolution-website
 ```
