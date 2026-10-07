@@ -65,6 +65,10 @@ NUNCA mude essas cores sem ser pedido explicitamente:
   se o texto variar por idioma, crie as chaves `p6`, `p7`, ... nos 3 idiomas.
 - O botão "Our Projects" mostra/oculta a lista (`toggleProjects()`).
 - Bloqueio de `contextmenu` e `dragstart` no fim do script (proteção contra cópia).
+- No `<head>` existe a metatag de verificação de domínio do Facebook:
+  `<meta name="facebook-domain-verification" content="gh741v3rx0cvwoqh5f9uf7iq8e57u9" />`.
+  É usada pelo Meta Business (verificação de domínio / pixel). Não remova; só
+  atualize o `content` se o código for regerado no painel da Meta.
 
 ---
 
